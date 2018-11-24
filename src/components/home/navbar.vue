@@ -38,7 +38,7 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar color="yellow  lighten-2" light fixed app>
+    <v-toolbar color="primary" dark fixed app>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title>Lab Embedded</v-toolbar-title>
       <v-spacer></v-spacer>
@@ -51,16 +51,19 @@
           </v-flex>
         </v-layout>
       </v-container>
+      <footeres></footeres>
     </v-content>
-    <v-footer color="yellow  lighten-2" light app>
-      <span>Muchammad Dwi Cahyo Nugroho <a href="https://tentang-koding.blogspot.com/" target="_blank">Tentang Koding</a></span>
-    </v-footer>
+    
   </v-app>
 </div>
 </template>
 
 <script>
+import footeres from "./footer.vue";
 export default {
+  components: {
+    footeres
+  },
   data: () => ({
     drawer: false
   }),
