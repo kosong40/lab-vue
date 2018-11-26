@@ -11,7 +11,7 @@
     </div>
     <div style="margin-top:8px;">
         <v-layout row>
-            <v-flex xs6 sm3>
+            <v-flex xs12 sm6>
                 <v-container fluid>
                     <v-card>
                     <v-img
@@ -73,6 +73,7 @@
 export default {
   data() {
     return {
+      show: false,
       items: [
         {
           src: "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg"

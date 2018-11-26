@@ -65,10 +65,18 @@ export default {
     footeres
   },
   data: () => ({
-    drawer: false
+    drawer: false,
+    mhs: null
   }),
   props: {
     source: String
+  },
+  created() {
+    this.$http
+      .get("http://localhost/api-lab/public/api/pengguna")
+      .then(function(response) {
+        this.mhs = response.body.data;
+      });
   }
 };
 </script>

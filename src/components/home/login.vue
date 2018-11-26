@@ -10,13 +10,13 @@
               </v-toolbar>
               <v-card-text>
                 <v-form>
-                  <v-text-field prepend-icon="person" label="NIM" type="text"></v-text-field>
-                  <v-text-field id="password" prepend-icon="lock"  label="Kata Sandi" type="password"></v-text-field>
+                  <v-text-field v-model="dataLog.username" prepend-icon="person" label="NIM" type="text"></v-text-field>
+                  <v-text-field v-model="dataLog.password" id="password" prepend-icon="lock"  label="Kata Sandi" type="password"></v-text-field>
                 </v-form>
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="primary">Masuk</v-btn>
+                <v-btn @click="login()" color="primary">Masuk</v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>
@@ -29,10 +29,37 @@
 <script>
 export default {
   data: () => ({
-    drawer: false
+    drawer: false,
+    dataLog: { username: null, password: null },
+    notif: null,
+    read: false
   }),
   props: {
     source: String
+  },
+  created() {
+    if (localStorage.length != 0) {
+      this.dataLog.username = localStorage.nim;
+      this.read = true;
+    } else {
+      this.read = false;
+    }
+  },
+  methods: {
+    login() {
+      var dataLogs = this.dataLog;
+      this.$http
+        .post("http://localhost/api-lab/public/api/login", dataLogs)
+        .then(function(response) {
+          if (response.body.pesan == "Y") {
+            localStorage.nim = response.body.data.id_pengguna;
+            localStorage.nama = response.body.data.nama;
+            this.$router.push("/mahasiswa");
+          } else {
+            alert("Nim atau Kata Sandi Salah");
+          }
+        });
+    }
   }
 };
 </script>
