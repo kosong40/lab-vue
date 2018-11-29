@@ -10,6 +10,7 @@ import konten from './components/home/konten.vue'
 import navbarMhs from './components/home/mhs/navbarMhs'
 import kontenMhs from './components/home/mhs/kontenMhs'
 import settingMhs from './components/home/mhs/settingMhs'
+import ruangMhs from './components/home/mhs/ruang'
 
 Vue.use(VueRouter);
 
@@ -23,6 +24,9 @@ export default new VueRouter({
             }, {
                 path: '/mahasiswa/pengaturan',
                 component: settingMhs
+            }, {
+                path: '/mahasiswa/ruang',
+                component: ruangMhs
             }]
         },
         {

@@ -1,11 +1,6 @@
 <template>
   <v-app id="inspire" dark>
-    <v-navigation-drawer
-      v-model="drawer"
-      clipped
-      fixed
-      app
-    >
+    <v-navigation-drawer v-model="drawer" clipped fixed app>
       <v-list dense>
         <v-list-tile href="#/mahasiswa/">
           <v-list-tile-action>
@@ -15,12 +10,20 @@
             <v-list-tile-title>Dashboard</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+        <v-list-tile href="#/mahasiswa/ruang">
+          <v-list-tile-action>
+            <v-icon>home</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Ruang</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
         <v-list-tile href="#/mahasiswa/pengaturan">
           <v-list-tile-action>
             <v-icon>settings</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title>Settings</v-list-tile-title>
+            <v-list-tile-title>Pengaturan</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
         <v-list-tile @click="keluar()">
@@ -38,11 +41,8 @@
       <v-toolbar-title>{{nama}}</v-toolbar-title>
     </v-toolbar>
     <v-content>
-      <v-container fluid >
-        <router-view 
-        v-bind:countMhs="countMhs" 
-        v-bind:allMhs="mhs" 
-        v-bind:profil="profil"/>
+      <v-container fluid>
+        <router-view v-bind:countMhs="countMhs" v-bind:allMhs="mhs" v-bind:profil="profil"/>
       </v-container>
     </v-content>
     <v-footer app fixed>

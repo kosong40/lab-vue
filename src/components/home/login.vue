@@ -2,7 +2,7 @@
   <v-app id="inspire">
     <v-content>
       <v-container fluid>
-        <v-layout justify-center="">
+        <v-layout justify-center>
           <v-flex xs12 sm6 md6>
             <v-card class="elevation-12">
               <v-toolbar dark color="primary">
@@ -10,8 +10,21 @@
               </v-toolbar>
               <v-card-text>
                 <v-form>
-                  <v-text-field v-model="dataLog.username" prepend-icon="person" label="NIM" type="text"></v-text-field>
-                  <v-text-field v-model="dataLog.password" id="password" prepend-icon="lock"  label="Kata Sandi" type="password"></v-text-field>
+                  <v-text-field
+                    v-model="dataLog.username"
+                    prepend-icon="person"
+                    label="NIM"
+                    type="text"
+                    @keyup.enter="login()"
+                  ></v-text-field>
+                  <v-text-field
+                    @keyup.enter="login()"
+                    v-model="dataLog.password"
+                    id="password"
+                    prepend-icon="lock"
+                    label="Kata Sandi"
+                    type="password"
+                  ></v-text-field>
                 </v-form>
               </v-card-text>
               <v-card-actions>

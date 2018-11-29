@@ -1,41 +1,47 @@
 <template>
-    <div>
-        <v-text-field
-            label="Nim"
-            outline
-            v-model="profil.nim"
-            readonly
-          ></v-text-field>
-        <v-text-field
-            label="Nama"
-            outline
-            v-model="profil.nama"
-            readonly
-          ></v-text-field>
-          <v-text-field
-            label="Alamat"
-            outline
-            v-model="profil.alamat"
-          ></v-text-field>
-          <v-text-field
-            label="Telepon"
-            outline
-            v-model="profil.telepon"
-          ></v-text-field>
-          <button @click="update()">Tekan</button>
-    </div>
+  <div>
+    <h1>Halaman Pengaturan</h1>
+    <br>
+    <v-text-field label="Nim" outline v-model="profil.nim" readonly></v-text-field>
+    <v-text-field label="Nama" outline v-model="profil.nama" readonly></v-text-field>
+    <v-text-field label="Alamat" outline v-model="inputan.alamat"></v-text-field>
+    <v-text-field label="Telepon" outline v-model="inputan.telepon"></v-text-field>
+    <v-btn color="primary" @click="update(profil.nim)">Simpan</v-btn>
+  </div>
 </template>
 <script>
 export default {
   props: ["countMhs", "allMhs", "profil"],
   data() {
     return {
-      inputan: { alamat: null, telepon: null }
+      inputan: { alamat: this.alamats, telepon: this.telepons }
     };
   },
-  created() {},
+  computed: {
+    alamats() {
+      return this.profil.alamat;
+    },
+    telepons() {
+      return this.profil.telepon;
+    }
+  },
+  created() {
+    this.inputan.alamat = this.alamats;
+    this.inputan.telepon = this.telepons;
+  },
   methods: {
-    update() {}
+    update(nim) {
+      var datas = this.inputan;
+      this.$http
+        .post(
+          "http://localhost/api-lab/public/api/pengguna/update/" + nim,
+          datas
+        )
+        .then(function(response) {
+          // console.log(response.body);
+          alert(response.body.pesan);
+        });
+    }
   }
 };
 </script>
