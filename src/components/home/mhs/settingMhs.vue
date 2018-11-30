@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Halaman Pengaturan</h1>
+    <h1 align="center">Halaman Pengaturan</h1>
     <br>
     <v-text-field label="Nim" outline v-model="profil.nim" readonly></v-text-field>
     <v-text-field label="Nama" outline v-model="profil.nama" readonly></v-text-field>

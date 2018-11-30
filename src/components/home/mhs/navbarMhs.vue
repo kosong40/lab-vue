@@ -10,14 +10,6 @@
             <v-list-tile-title>Dashboard</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile href="#/mahasiswa/ruang">
-          <v-list-tile-action>
-            <v-icon>home</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Ruang</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
         <v-list-tile href="#/mahasiswa/pengaturan">
           <v-list-tile-action>
             <v-icon>settings</v-icon>
@@ -45,16 +37,13 @@
         <router-view v-bind:countMhs="countMhs" v-bind:allMhs="mhs" v-bind:profil="profil"/>
       </v-container>
     </v-content>
-    <v-footer app fixed>
-      <span>&copy; 2017</span>
-    </v-footer>
   </v-app>
 </template>
 
 <script>
 export default {
   data: () => ({
-    drawer: null,
+    drawer: false,
     nama: localStorage.nama,
     countMhs: null,
     mhs: [],
